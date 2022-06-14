@@ -1,4 +1,4 @@
-<app-pagina-publica textoBotaoSubmit="Login">
+<app-pagina-publica textoBotaoSubmit="Login" (submiterFormulario)="submit()">
     <app-input-publico imagem="assets/imagens/envelope.svg" placeholder="E-mail" tipo="email"
         [referenciaFormulario]="obterReferencia('login')" conteudoFormulario></app-input-publico>
 

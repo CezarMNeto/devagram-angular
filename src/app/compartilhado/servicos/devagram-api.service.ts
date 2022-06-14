@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 
@@ -16,6 +17,17 @@ export class DevagramApiService {
             this.http.post(
                 this.obterUrl(url),
                 body
+            ).subscribe({
+                next: v => resolve(v),
+                error: e => reject(e)
+            })
+        });
+    }
+
+    public get(url: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(
+                this.obterUrl(url)
             ).subscribe({
                 next: v => resolve(v),
                 error: e => reject(e)
