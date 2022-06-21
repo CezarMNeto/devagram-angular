@@ -1,4 +1,4 @@
-@import '../../../assets/estilos/variaveis.scss';
+@import '../../../../../assets/estilos/variaveis.scss';
 
 .cabecalhoPrincipal {
     border-bottom: 0.5px solid var(--cinza1);
@@ -56,7 +56,7 @@
             .informacoesUsuario {
                 flex: 1;
 
-                >* {
+                > * {
                     display: block;
                     font-size: 12px;
                     color: var(--cinza4);
@@ -76,7 +76,6 @@
 
             .logoCabecalho {
                 width: 150px;
-
                 img {
                     width: 100%;
                 }
@@ -99,11 +98,10 @@
 
             .resultado {
                 .informacoesUsuario {
-                    >* {
+                    > * {
                         font-size: 14px;
                     }
                 }
             }
         }
     }
-}

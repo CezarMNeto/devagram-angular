@@ -10,7 +10,7 @@ export class AutenticacaoGuard implements CanActivate {
     constructor(
         private servicoAutenticacao: AutenticacaoService,
         private router: Router
-    ) { }
+    ) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
         if (this.servicoAutenticacao.estaLogado()) {
