@@ -34,3 +34,19 @@ export class UploadImagemComponent implements OnInit {
     }
   }
 }
+
+  public trocarArquivo(event: any): void {
+    if (event.target.files && event.target.files.length) {
+      const [arquivo] = event.target.files;
+
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(arquivo);
+      fileReader.onloadend = () => {
+        this.imagemPrevisualizacao = fileReader.result as string;
+        this.referenciaFormulario?.setValue(arquivo);
+        this.referenciaFormulario?.markAsDirty();
+        this.aoAtualizarImagem.emit(this.imagemPrevisualizacao);
+      }
+    }
+  }
+}

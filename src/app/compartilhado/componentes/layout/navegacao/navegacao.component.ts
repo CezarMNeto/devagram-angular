@@ -5,29 +5,27 @@ import { ItemMenu } from './item-menu.type';
 @Component({
   selector: 'app-navegacao',
   templateUrl: './navegacao.component.html',
-  styleUrls: ['./navegacao.component.scss']
+  styleUrls: ['./navegacao.component.scss'],
 })
 export class NavegacaoComponent implements OnInit {
-
   private rotaAtiva: string = 'home';
   private mapaDeRotas: ItemMenu = {
     home: {
       img: 'home',
-      rotas: ['/']
+      rotas: ['/'],
     },
     publicacao: {
       img: 'publicacao',
-      rotas: ['/publicacao']
+      rotas: ['/publicacao'],
     },
     perfil: {
       img: 'usuario',
-      rotas: ['/perfil/pessoal']
-    }
-  }
-  constructor(private router: Router) { }
+      rotas: ['/perfil/pessoal', '/perfil/pessoal/editar'],
+    },
+  };
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public redirecionarPara(menu: string): void {
     const rotaMenu = this.mapaDeRotas[menu];
@@ -38,8 +36,7 @@ export class NavegacaoComponent implements OnInit {
     const rotaMenu = this.mapaDeRotas[menu];
 
     let icone = rotaMenu.img;
-    if (rotaMenu.rotas.includes(this.router.url)
-      || this.rotaAtiva === menu) {
+    if (rotaMenu.rotas.includes(this.router.url) || this.rotaAtiva === menu) {
       icone = `${rotaMenu.img}Ativo`;
       this.rotaAtiva = menu;
     }

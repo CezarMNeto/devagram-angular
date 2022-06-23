@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UsuarioDevagram } from '../tipos/usuario-devagram.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DevagramUsuarioApiService extends DevagramApiService {
   public buscarDadosUsuario(): Promise<UsuarioDevagram> {
@@ -16,5 +16,9 @@ export class DevagramUsuarioApiService extends DevagramApiService {
 
   public obterInformacoesDoPerfil(idUsuario: string): Promise<UsuarioDevagram> {
     return this.get('pesquisa?id=' + idUsuario);
+  }
+
+  public alternarSeguir(idUsuario: string) {
+    return this.put('seguir?id=' + idUsuario, {});
   }
 }

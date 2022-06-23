@@ -8,10 +8,9 @@ const limiteCaracteresDescricaoPadrao = 90;
 @Component({
   selector: 'app-postagem',
   templateUrl: './postagem.component.html',
-  styleUrls: ['./postagem.component.scss']
+  styleUrls: ['./postagem.component.scss'],
 })
 export class PostagemComponent implements OnInit {
-
   @Input() postagem: Postagem = {} as Postagem;
   @Input() usuarioLogado: UsuarioLogado | null = null;
 
@@ -21,11 +20,17 @@ export class PostagemComponent implements OnInit {
   public limiteCaracteresDescricao: number = limiteCaracteresDescricaoPadrao;
   public estaFazendoRequisicaoParaBackend: boolean = false;
 
-  constructor(
-    private servicoFeed: FeedService
-  ) { }
+  constructor(private servicoFeed: FeedService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  public obterUrlPerfil(): string {
+    let idUsuarioPostagem = this.postagem.idUsuario;
+    if (idUsuarioPostagem === this.usuarioLogado?.id) {
+      idUsuarioPostagem = 'pessoal';
+    }
+
+    return '/perfil/' + idUsuarioPostagem;
   }
 
   public exibirDescricaoCompleta() {
@@ -33,9 +38,7 @@ export class PostagemComponent implements OnInit {
   }
 
   public obterImagemCurtida() {
-    const iconeBase = this.postagem.estaCurtido
-      ? 'descurtir'
-      : 'curtir';
+    const iconeBase = this.postagem.estaCurtido ? 'descurtir' : 'curtir';
 
     return `assets/imagens/${iconeBase}.svg`;
   }
@@ -67,7 +70,7 @@ export class PostagemComponent implements OnInit {
 
       this.postagem.comentarios.push({
         comentario: this.comentarioAtual,
-        nome: this.usuarioLogado?.nome!
+        nome: this.usuarioLogado?.nome!,
       });
 
       this.comentarioAtual = '';
@@ -80,9 +83,7 @@ export class PostagemComponent implements OnInit {
   }
 
   public verificarQuantidadeLinhas() {
-    this.quantidadeLinhasTextarea = this.comentarioAtual.length > 0
-      ? 2
-      : 1;
+    this.quantidadeLinhasTextarea = this.comentarioAtual.length > 0 ? 2 : 1;
   }
 
   public async manipularCurtida(): Promise<void> {
@@ -103,8 +104,8 @@ export class PostagemComponent implements OnInit {
 
   public validarComentario(): boolean {
     return (
-      !this.estaFazendoRequisicaoParaBackend
-      && this.comentarioAtual.trim().length >= 3
+      !this.estaFazendoRequisicaoParaBackend &&
+      this.comentarioAtual.trim().length >= 3
     );
   }
 }
