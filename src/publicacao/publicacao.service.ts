@@ -1,5 +1,5 @@
-import { RespostaApiDevagram } from './../compartilhado/tipos/resposta-api-devagram.type';
-import { DevagramApiService } from './../compartilhado/servicos/devagram-api.service';
+import { RespostaApiDevagram } from '../app/compartilhado/tipos/resposta-api-devagram.type';
+import { DevagramApiService } from '../app/compartilhado/servicos/devagram-api.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({

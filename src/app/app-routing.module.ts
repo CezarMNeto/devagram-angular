@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'publicacao',
     canActivate: [AutenticacaoGuard],
     loadChildren: () =>
-      import('./publicacao/publicacao.module').then((m) => m.PublicacaoModule),
+      import('../publicacao/publicacao.module').then((m) => m.PublicacaoModule),
   },
   {
     path: '',
