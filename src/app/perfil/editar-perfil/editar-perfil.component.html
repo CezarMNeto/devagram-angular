@@ -13,8 +13,9 @@
 
         <div class="edicaoAvatar">
           <app-upload-imagem [referenciaFormulario]="obterReferenciaInput('file')"
-            [imagemPrevisualizacao]="usuarioLogado?.avatar" classeCssImagemPrevisualizacao="avatarEdicaoPerfil"
-            classeCssContainer="uploadImagemEdicaoPerfil">
+            [imagemPrevisualizacao]="usuarioLogado?.avatar"
+            classeCssImagemPrevisualizacao="avatarEdicaoPerfil bordaGradienteAvatar"
+            classeCssContainer="uploadImagemEdicaoPerfil" (aoAtualizarImagem)="manipularAtualizacaoImagem($event)">
             <span>Alterar foto do perfil</span>
           </app-upload-imagem>
         </div>

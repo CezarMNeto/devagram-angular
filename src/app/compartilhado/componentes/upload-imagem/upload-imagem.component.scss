@@ -1,21 +1,70 @@
-<div [ngClass]="['containerUploadImagem', classeCssContainer]"
-    (click)="inputArquivo.click()"
->
-    <div class="containerPrevisualizacao" *ngIf="imagemPrevisualizacao">
-        <img
-            [src]="imagemPrevisualizacao"
-            alt="Imagem pre visualizacao"
-            [class]="classeCssImagemPrevisualizacao"
-        />
-    </div>
 
-    <ng-content></ng-content>
+@import '../../../../assets/estilos/variaveis.scss';
 
-    <input
-        type="file"
-        class="oculto"
-        accept="image/*"
-        (change)="trocarArquivo($event)"
-        #inputArquivo
-    />
-</div>
+.containerUploadImagem {
+    &.paginaCadastroUpload {
+        text-align: center;
+        cursor: pointer;
+        object-fit: cover;
+        position: relative;
+
+        .avatarPrevisualizacao {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+        }
+
+        &::after {
+            content: url('/assets/imagens/camera.svg');
+            width: 40px;
+            height: 40px;
+            display: flex;
+            right: 0;
+            left: 90px;
+            margin: auto;
+            position: absolute;
+            bottom: 5px;
+        }
+    }
+
+    &.uploadImagemEdicaoPerfil {
+        .containerPrevisualizacao {
+            text-align: center;
+            padding: 14px 14px 8px;
+
+            .avatarEdicaoPerfil {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        @media screen and (min-width: $breakpointDesktop) {
+            .containerPrevisualizacao {
+                .avatarEdicaoPerfil {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+        }
+    }
+
+    &.paginaPublicacao {
+        .imagemPrevisualizacaoPublicacao,
+        .imagemPrevisualizacaoPublicacao2Etapa {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+
+            &.imagemPrevisualizacaoPublicacao {
+                margin-bottom: 20px;
+            }
+
+            @media screen and (min-width: $breakpointDesktop) {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}

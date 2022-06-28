@@ -5,26 +5,35 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
+    loadChildren: () =>
+      import('./cadastro/cadastro.module').then((m) => m.CadastroModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
   },
   {
     path: 'perfil',
     canActivate: [AutenticacaoGuard],
-    loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilModule)
+    loadChildren: () =>
+      import('./perfil/perfil.module').then((m) => m.PerfilModule),
+  },
+  {
+    path: 'publicacao',
+    canActivate: [AutenticacaoGuard],
+    loadChildren: () =>
+      import('./publicacao/publicacao.module').then((m) => m.PublicacaoModule),
   },
   {
     path: '',
     canActivate: [AutenticacaoGuard],
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  }
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
